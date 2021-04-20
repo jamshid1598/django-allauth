@@ -1,0 +1,4 @@
+media/
+media_root/
+env/
+*.sqlite3
