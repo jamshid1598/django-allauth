@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^coguz)031plxz#hhc6u%b1b58hy&5vvr+pncx-+rb)y-=-r4_'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -66,6 +67,32 @@ AUTHENTICATION_BACKEND = [
     'allauth.account.auth_backend.AuthenticationBackend',
 ]
 
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google':{
+        'APP':{
+            'client_id' : '123',
+            'secret' : '456',
+            'key' : '',
+        }
+    },
+
+    'paypal': {
+        'SCOPE': ['openid', 'email'],
+        'MODE': 'live',
+    },
+
+    'pinterest': {
+        'SCOPE': [
+        'read_public',
+        'read_relationships',
+        ]
+    },
+
+
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,7 +109,7 @@ ROOT_URLCONF = 'allauth_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
