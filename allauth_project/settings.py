@@ -60,11 +60,16 @@ INSTALLED_APPS = [
 ]
 
 AUTHENTICATION_BACKEND = [
+    # default django authentication backend
     'django.contrib.auth.backends.ModelBackend',
 
     # allauth specific authentication method, such as login by e-mail
     'allauth.account.auth_backend.AuthenticationBackend',
 ]
+
+ACCOUNT_EMAIL_VERIFICATION = 'none' # mandatory, optional, none
+
+LOGIN_REDIRECT_URL = '/' # redirect to home after successful login
 
 SITE_ID = 1
 
@@ -159,7 +164,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
@@ -172,6 +177,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = BASE_DIR / 'static_root/'
+MEDIA_ROOT  = BASE_DIR / 'media_root/'
+
+STATICFILES_DIRS = (BASE_DIR, '/static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
