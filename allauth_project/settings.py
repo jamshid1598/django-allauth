@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -70,11 +69,11 @@ AUTHENTICATION_BACKEND = [
 SITE_ID = 1
 
 SOCIALACCOUNT_PROVIDERS = {
-    'google':{
-        'APP':{
-            'client_id' : '123',
-            'secret' : '456',
-            'key' : '',
+    'google': {
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': '',
         }
     },
 
@@ -85,8 +84,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
     'pinterest': {
         'SCOPE': [
-        'read_public',
-        'read_relationships',
+            'read_public',
+            'read_relationships',
         ]
     },
 
@@ -114,7 +113,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # allauth needs this from django
+                'django.template.context_processors.request',  # allauth needs this from django
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
